@@ -38,6 +38,24 @@ module ScrewSpace(stretch) {
   }
 }
 
+module PCB(height) {
+  %translate([-3*2.54 - 0.5, -4*2.54, height]) {
+    difference() {
+      cube([7*2.54, 8*2.54, 1.8]);
+        
+      union() {
+        for(x = [0:8]) {
+          for(y = [0:8]) {
+            dd = (x==2 && (y==2 || y == 6)) ? 3 : 1.2;
+            translate([2.54*x, 2.54*y, -0.1])
+              cylinder(h=2, d=dd, $fn=100);
+          }
+        }
+      }
+    }
+  }
+}
+
 difference() {
   Body();
   union() {
@@ -49,18 +67,4 @@ difference() {
   }
 }
 
-%translate([-3*2.54 - 0.5, -4*2.54, 15]) {
-  difference() {
-    cube([7*2.54, 8*2.54, 1.8]);
-    
-    union() {
-      for(x = [0:8]) {
-        for(y = [0:8]) {
-          dd = (x==2 && (y==2 || y == 6)) ? 3 : 1.2;
-          translate([2.54*x, 2.54*y, -0.1])
-            cylinder(h=2, d=dd, $fn=100);
-        }
-      }
-    }
-  }
-}
+PCB(15);
