@@ -21,7 +21,7 @@ difference() {
         cube([4, 4*2.54, 1]);
 
         translate([0, 0, 1])
-        scale([1, 1, 1/(2*sqrt(2))])
+        scale([1, 1, 0.5])
         rotate([0, 45, 0])
         cube([4/sqrt(2), 4*2.54, 4/sqrt(2)]);
       }
