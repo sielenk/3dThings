@@ -61,7 +61,10 @@ module diffuser() {
                 cylinder(
                     d1 = tube_outer + 2*0.8,
                     d2 = hose_outer,
-                    h = diffuser_length + tube_overlap
+                    h = diffuser_length
+                        + tube_overlap
+                        - hose_adaptor_length
+                        + hose_adaptor_ridge_height
                 );
                 translate([0, 0, -tube_wing_length]) {
                     for (phi = [0:120:240]) {
@@ -72,6 +75,12 @@ module diffuser() {
                         }
                     }
                 }
+                translate([0, 0, diffuser_length
+                    + tube_overlap
+                    - hose_adaptor_length
+                    + hose_adaptor_ridge_height]) {
+                    cylinder(d = hose_outer, h = hose_adaptor_length);
+                }
             }
         }
         union() {
@@ -79,25 +88,19 @@ module diffuser() {
             translate([0, 0, -tube_overlap]) {
                 cylinder(d=tube_outer, h=tube_overlap);
             }
-        }
-    }
-    translate([0, 0, diffuser_length]) difference() {
-        cylinder(d = hose_outer, h = hose_adaptor_length);
-        union() {
-            cylinder(d = hose_inner, h = hose_adaptor_length);
-            translate([0, 0, hose_adaptor_length - hose_adaptor_ridge_height])
+            translate([0, 0, diffuser_length]) {
                 cylinder(d = hose_adaptor_ridge_width, h = hose_adaptor_ridge_height);
+            }
         }
     }
 }
 
 module diffuser_adjusted() {
-    translate([0, 0, diffuser_length + hose_adaptor_length]) rotate([180]) diffuser();
+    translate([0, 0, diffuser_length + hose_adaptor_ridge_height]) rotate([180]) diffuser();
 }
 
-%hose();
-%translate([0, 0, -diffuser_length]) tube();
-translate([0, 0, -diffuser_length]) diffuser();
-
-
-
+//%hose();
+translate([0, 0, -diffuser_length - hose_adaptor_ridge_height]) {
+    %tube();
+    diffuser();
+}
