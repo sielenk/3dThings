@@ -2,7 +2,7 @@
 tube_inner = 15;
 
 // tube outer diameter (mm)
-tube_outer = 20;
+tube_outer = 20.2;
 
 // diffusor/tube overlap (mm)
 tube_overlap = 30;
