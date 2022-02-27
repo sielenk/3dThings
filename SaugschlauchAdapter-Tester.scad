@@ -1,7 +1,7 @@
 use <SaugschlauchAdapter.scad>
 
 outer_width = 49.4;
-ridge_width = 40;
+ridge_width = 39;
 inner_width = 32;
 ridge_height = 2;
 length = 37;
@@ -26,12 +26,18 @@ module probe() {
     ]);
 }
 
-linear_extrude(2) {
-    probe();
-    mirror([1, 0, 0]) probe();
-}
+//linear_extrude(2) {
+//    probe();
+//    mirror([1, 0, 0]) probe();
+//}
+
 
 translate([0, -20, 4]) intersection() {
-    translate([0, 0, 0]) cube([40, 40, 8], center = true);
+    cube([40, 40, 8], center = true);
     rotate([180, 0, 0]) diffuser();
+}
+
+translate([0, 25, 0]) intersection() {
+    translate([0, 0, 4]) cube([60, 60, 8], center = true);
+    diffuser_adjusted();
 }
