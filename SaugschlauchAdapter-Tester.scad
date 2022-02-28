@@ -46,10 +46,11 @@ module probe() {
 
 module ring(d) {
     difference() {
-        cylinder(d = outer_width, h = 5);
-        cylinder(d = outer_width - 10, h = 5);
+        cylinder(d = d, h = 5);
+        cylinder(d = d - 10, h = 5);
     }
 }
 
-translate ([ 26, 0, 0]) ring(49);
-translate ([-26, 0, 0]) ring(49.6);
+//translate ([ 26, 0, 0]) ring(49);
+//translate ([-26, 0, 0]) 
+ring(49.6);
