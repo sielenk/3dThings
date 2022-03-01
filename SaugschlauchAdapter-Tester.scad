@@ -53,5 +53,7 @@ module ring(d) {
     translate([0, 14, 5]) scale([0.5, 0.5, 0.5]) linear_extrude(0.4) text(str(d), halign="center", valign="center");
 }
 
-translate ([ 26, 0, 0]) ring(50);
-translate ([-26, 0, 0]) ring(49.8);
+translate ([ 26,  26, 0]) ring(49.0);
+translate ([-26,  26, 0]) ring(49.2);
+translate ([ 26, -26, 0]) ring(49.4);
+translate ([-26, -26, 0]) ring(49.6);
