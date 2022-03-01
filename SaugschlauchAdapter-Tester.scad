@@ -49,8 +49,9 @@ module ring(d) {
         cylinder(d = d, h = 5);
         cylinder(d = d - 10, h = 5);
     }
+    translate([-10, 10, 0]) cube([20, 10, 5]);
+    translate([0, 14, 5]) scale([0.5, 0.5, 0.5]) linear_extrude(0.4) text(str(d), halign="center", valign="center");
 }
 
-//translate ([ 26, 0, 0]) ring(49);
-//translate ([-26, 0, 0]) 
-ring(49.6);
+translate ([ 26, 0, 0]) ring(50);
+translate ([-26, 0, 0]) ring(49.8);
