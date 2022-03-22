@@ -1,19 +1,28 @@
 // (c) 2022 Marvin Sielenkemper
 
 // Deichsel Außendurchmesser
-dia_drawbar = 70;
+dia_drawbar = 70.7;
 
 // Deichsel Wandstärke
-wall_drawbar = 3.1;
+wall_drawbar = 3;
 
 // Deichsel Loch Durchmesser
-dia_hole = 19;
+dia_hole = 18.5;
 
 // Kabel Durchmesser
-dia_wire = 12;
+dia_wire = 11.5;
 
 // Überlappung außen
 overlapp = 2;
+
+// Überstand außen
+ext_out = 1;
+
+// Überstand innen
+ext_in = 4;
+
+// Rampenhöhe
+ramp_height = 2;
 
 
 module drawbar(wall = wall_drawbar) {
@@ -40,34 +49,34 @@ module plug() {
                 rotate([0, 90, 0]) difference() {
                     $fn=64;
                     union () {
-                        translate([0, 0, -wall_drawbar])  {
-                            cylinder(h = 3*wall_drawbar, d = dia_hole + 2*overlapp);
+                        translate([0, 0, -ext_in])  {
+                            cylinder(h = ext_in + wall_drawbar + ext_out, d = dia_hole + 2*overlapp);
                         }
-                        translate([0, 0, 2*wall_drawbar]) rotate_extrude() {
+                        translate([0, 0, wall_drawbar + ext_out]) rotate_extrude() {
                                 translate([dia_wire/4 + dia_hole/4 + overlapp/2, 0, 0])
                                 circle(d=dia_hole/2 + overlapp - dia_wire/2, $fn=32);
                         }
-                        translate([0, 0, -wall_drawbar]) rotate_extrude() {
+                        translate([0, 0, -ext_in]) rotate_extrude() {
                                 translate([dia_wire/4 + dia_hole/4, 0, 0])
                                 circle(d=dia_hole/2 - dia_wire/2, $fn=32);
                         }
                     }
-                    translate([0, 0, -2*wall_drawbar]) {
-                        cylinder(h = 5*wall_drawbar, d = dia_wire);
+                    translate([0, 0, -ext_in-1]) {
+                        cylinder(h = ext_in + wall_drawbar + ext_out + 2, d = dia_wire);
                     }
                 }
-                drawbar(wall_drawbar * 2);
+                drawbar(wall_drawbar + ext_in);
             }
             rotate([0, 90, 0]) {
-                translate([0, 0, -wall_drawbar]) {
+                translate([0, 0, -ext_in]) {
                     $fn=64;
                     intersection() {
-                        translate([-(dia_hole + overlapp)/2, -dia_hole/6, 0])
-                            cube([dia_hole + overlapp, dia_hole/3, wall_drawbar]);
+                        translate([-(dia_hole + overlapp)/2, -dia_hole/6, -0.5])
+                            cube([dia_hole + ramp_height + 0.5, dia_hole/3, ext_in+1]);
                         difference() {
-                            cylinder(h=wall_drawbar, d1=dia_hole, d2=dia_hole+1);
+                            cylinder(h=ext_in, d1=dia_hole, d2=dia_hole+ramp_height);
                             translate([0, 0, -0.5])
-                                cylinder(h=wall_drawbar+1, d1=dia_hole-0.5, d2=dia_hole-0.5);
+                                cylinder(h=ext_in+1, d1=dia_hole-0.5, d2=dia_hole-0.5);
                         }
                     }
                 }
@@ -81,6 +90,8 @@ module plug() {
 intersection() {
     translate([-25, -20, 0]) cube([40, 40, 20]);
 
-    //rotate([90, 0, 0])
-    plug();
+    rotate([90, 0, 0]) {
+        //%drawbar();
+        plug();
+    }
 }
