@@ -4,7 +4,7 @@
 dia_drawbar = 70.7;
 
 // Deichsel Wandstärke
-wall_drawbar = 3;
+wall_drawbar = 3.1;
 
 // Deichsel Loch Durchmesser
 dia_hole = 18.5;
@@ -13,13 +13,13 @@ dia_hole = 18.5;
 dia_wire = 11.5;
 
 // Überlappung außen
-overlapp = 2;
+overlapp = 4;
 
 // Überstand außen
-ext_out = 1;
+ext_out = 0;
 
 // Überstand innen
-ext_in = 4;
+ext_in = 5;
 
 // Rampenhöhe
 ramp_height = 2;
@@ -71,8 +71,8 @@ module plug() {
                 translate([0, 0, -ext_in]) {
                     $fn=64;
                     intersection() {
-                        translate([-(dia_hole + overlapp)/2, -dia_hole/6, -0.5])
-                            cube([dia_hole + ramp_height + 0.5, dia_hole/3, ext_in+1]);
+                        //translate([-(dia_hole + ramp_height + 0.5)/2, -dia_hole/6, -0.5])
+                        //    cube([dia_hole + ramp_height + 0.5, dia_hole/3, ext_in+1]);
                         difference() {
                             cylinder(h=ext_in, d1=dia_hole, d2=dia_hole+ramp_height);
                             translate([0, 0, -0.5])
@@ -87,11 +87,13 @@ module plug() {
 }
 
 
-intersection() {
-    translate([-25, -20, 0]) cube([40, 40, 20]);
+difference() {
+    //translate([-25, -20, 0]) cube([40, 40, 20]);
 
-    rotate([90, 0, 0]) {
-        //%drawbar();
+    rotate([90, 90, 0]) {
+        %drawbar();
         plug();
     }
+
+    translate([0, -0.05, -10]) cube([20, 0.1, 20]);
 }
