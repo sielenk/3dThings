@@ -1,11 +1,14 @@
 $fn = 64;
 
 module Hohlwanddose(h) {
+    abstand = 71;
+    loch = 68;
+
     linear_extrude(h) hull() {
-        translate([-35,0, 0]) circle(d=65);
-        translate([ 35,0, 0]) circle(d=65);
+        translate([-abstand/2, 0, 0]) circle(d=loch);
+        translate([ abstand/2, 0, 0]) circle(d=loch);
     }
-    %translate([(135-65-152)/2-35, -81/2, h]) {
+    %translate([-152/2, -81/2, h]) {
         cube([152, 81, 1]);
     }
 }
@@ -87,7 +90,7 @@ module MaskeOben() {
         translate([-25, 57, -1]) cube([180, 300, dicke + 2]);
         minkowski() {
             Zungen();
-            sphere(d=0.1);
+            sphere(d=0.4);
         }
     }
 }
