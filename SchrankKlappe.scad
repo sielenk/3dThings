@@ -71,6 +71,17 @@ module Platte() {
                     }
                 }
             }
+
+            translate([2.5+122/2-30, 20+37/2, -0.5]) intersection() {
+                cylinder(h = dicke+1, d = 29);
+                translate([0, 0, (dicke+1)/2]) {
+                    cube([26.5, 29, dicke+1], center = true);
+                }
+            }
+
+            translate([2.5+122/2+30, 20+37/2, -0.5]) {
+                cylinder(h = dicke+1, d = 29);
+            }
         }
     }
 }
