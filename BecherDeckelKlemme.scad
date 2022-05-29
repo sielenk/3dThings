@@ -1,6 +1,6 @@
 becher_durchmesser_aussen = 105.2;
 becher_ring_durchmesser = 3.3;
-becher_hoehe = 16.5;
+becher_hoehe = 16;
 
 klammer_breite = 18;
 klammer_dicke = 2;
