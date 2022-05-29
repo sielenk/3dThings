@@ -30,26 +30,13 @@ module wedge(d=0) {
 
 module base() {
     translate([0, base_depth/2, 0]) rotate([90, 0, 0]) {
-        linear_extrude(base_depth/2-wire_diameter/2) polygon([
+        linear_extrude(base_depth) polygon([
             [-base_width/2, base_height],
             [-base_width/2-base_height, 0],
             [+base_width/2+base_height, 0],
             [+base_width/2, base_height]]
         );
     }
-
-    translate([-base_width/2, 0, 0]) rotate([90, 0, 90]) {
-        linear_extrude(base_width) polygon([
-            [-base_depth/2+base_height, base_height],
-            [-base_depth/2, 0],
-            [+base_depth/2, 0],
-            [+base_depth/2, base_height]]
-        );
-    }
-
-    //translate([0, 0, base_height/2]) {
-    //    cube([base_width, base_depth, base_height], center=true);
-    //}
 }
 
 module link() {
