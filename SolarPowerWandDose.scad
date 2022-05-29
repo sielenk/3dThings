@@ -87,9 +87,6 @@ module cover_inside(is_inside = false) {
         rotate([90, 0, 90]) linear_extrude(cover_width) polygon([
             [cover_back, cover_base],
             [cover_back, base_height],
-            [cover_back+cable_diameter, cover_top],
-            [cover_front1, cover_top],
-            [cover_front1, cover_bottom],
             [cover_front2, cover_bottom],
             [cover_front2, cover_base]
         ]);
@@ -109,6 +106,23 @@ module cover_inside(is_inside = false) {
             sphere(r=tolerance);
         }
     }
+
+    hull() {
+        translate([0, cover_front1, (cover_bottom+cover_top)/2])
+        rotate([90, 0, 0])
+        linear_extrude(cover_front1-cover_front2+0.1)
+        circle(d=cable_diameter);
+
+        translate([-cover_width/2, 0, 0])
+        rotate([90, 0, 90])
+        linear_extrude(cover_width)
+        polygon([
+            [cover_back, base_height],
+            [cover_back, base_height+0.1],
+            [cover_front2, cover_bottom],
+        ]);
+    }
+
 }
 
 module cover_outside() {
