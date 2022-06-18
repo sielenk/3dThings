@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="1.1" baseProfile="full"
+    width="200mm" height="200mm">
+	<defs>
+	  <filter id="tile" x="0" y="0" width="100%" height="100%">
+	  </filter>
+	</defs>
+	
+    <title>Bohrschablone Vorzeltsteckdose</title>
+	
+	<g>
+		<rect x="0" y="0" width="90mm" height="90mm" rx="10" ry="10" fill="white" stroke="black" />
+
+		<circle cx="45mm" cy="45mm" r="32mm" fill="white" stroke="black" />
+		<circle cx="45mm" cy="45mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="69.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="69.5mm" r="0.5mm" />
+    </g>
+	<g transform="translate(400, 0)">
+		<rect x="0" y="0" width="90mm" height="90mm" rx="10" ry="10" fill="white" stroke="black" />
+
+		<circle cx="45mm" cy="45mm" r="32mm" fill="white" stroke="black" />
+		<circle cx="45mm" cy="45mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="69.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="69.5mm" r="0.5mm" />
+    </g>
+	<g transform="translate(0, 400)">
+		<rect x="0" y="0" width="90mm" height="90mm" rx="10" ry="10" fill="white" stroke="black" />
+
+		<circle cx="45mm" cy="45mm" r="32mm" fill="white" stroke="black" />
+		<circle cx="45mm" cy="45mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="69.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="69.5mm" r="0.5mm" />
+    </g>
+	<g transform="translate(400, 400)">
+		<rect x="0" y="0" width="90mm" height="90mm" rx="10" ry="10" fill="white" stroke="black" />
+
+		<circle cx="45mm" cy="45mm" r="32mm" fill="white" stroke="black" />
+		<circle cx="45mm" cy="45mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="8.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="8.5mm" r="0.5mm" />
+
+		<circle cx="10mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="10mm" cy="69.5mm" r="0.5mm" />
+
+		<circle cx="80mm" cy="69.5mm" r="2.25mm" fill="white" stroke="black" />
+		<circle cx="80mm" cy="69.5mm" r="0.5mm" />
+    </g>
+</svg>
