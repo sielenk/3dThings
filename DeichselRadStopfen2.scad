@@ -51,9 +51,13 @@ module drawbar(wall = wall_drawbar) {
       }
     }
 
-    rotate_extrude($fn=64) {
-      translate([dia_drawbar/2 + clamp_diameter/2, 0]) {
-        circle(d = clamp_diameter, $fn=32);
+    translate([0.5, 0, 0]) {
+      rotate([0, 0, -90]) {
+        rotate_extrude(angle=180, $fn=64) {
+          translate([dia_drawbar/2 + clamp_diameter/2, 0]) {
+            circle(d = clamp_diameter, $fn=32);
+          }
+        }
       }
     }
   }
