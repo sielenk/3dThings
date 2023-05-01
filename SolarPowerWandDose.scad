@@ -145,6 +145,8 @@ module cover() {
 }
 
 //base();
+//cover_inside();
+//%cover_outside();
 //translate([50, 0, 0]) cover_inside(true);
 
 cover();
