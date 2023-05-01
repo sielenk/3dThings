@@ -9,7 +9,6 @@ klammer_breite = 18;
 klammer_dicke = 2.4;
 klammer_ring_durchmesser = 3.3;
 klammer_loch_durchmesser = 97;
-klammer_ueberstand = 13;
 klammer_schloss_hoehe = 4;
 
 duese_durchmesser = 0.6;
@@ -20,7 +19,7 @@ klammer_loch_radius = klammer_loch_durchmesser / 2;
 
 module klammer() {
     $fn = 64;
-    klammer = [klammer_breite, becher_durchmesser_aussen+2+klammer_dicke];
+    klammer = [klammer_breite, becher_durchmesser_aussen+3+klammer_dicke];
 
     translate([0, 0, becher_hoehe + klammer_dicke/2]) {
         minkowski() {
@@ -49,13 +48,10 @@ module klammer() {
         for (f = [0, 180]) {
             rotate([0, 0, f]) {
                 translate([-klammer.x/2, -klammer.y/2, 0]) {
-                    translate([0, 0, (klammer_ring_radius-klammer_dicke)/2-klammer_ueberstand]) {
-                        cube([klammer.x, klammer_dicke, becher_hoehe+klammer_dicke+klammer_ueberstand]);
-                        rotate([0, 90, 0]) {
-                            cylinder(r=klammer_dicke, h=klammer.x);
-                        }
+                    translate([0, 0, (klammer_ring_radius-klammer_dicke)/2]) {
+                        cube([klammer.x, klammer_dicke, becher_hoehe+klammer_dicke]);
 
-                        translate([0, 2*klammer_dicke, becher_hoehe+klammer_dicke+klammer_ueberstand-1.5*klammer_dicke]) {
+                        translate([0, 2*klammer_dicke, becher_hoehe-0.5*klammer_dicke]) {
                             rotate([0, 90, 0]) {
                                 difference() {
                                     translate([-klammer_dicke, -klammer_dicke, 0])
@@ -71,7 +67,14 @@ module klammer() {
         }
 
         difference() {
-            cube([klammer.x, klammer.y, klammer_ring_radius], center=true);
+            union() {
+                cube([klammer.x, klammer.y, klammer_ring_radius], center=true);
+                translate([-klammer.x/2, klammer.y/2-klammer_ring_radius, -klammer_ring_radius/2]) {
+                    rotate([0, 90, 0]) {
+                        cylinder(h = klammer.x, r=klammer_ring_radius);
+                    }
+                }
+            }
             translate([0, 0, -(klammer_ring_radius+1)/2]) {
                 cylinder(r=klammer_loch_radius, h=klammer_ring_radius+1);
             }
