@@ -48,6 +48,15 @@ module klammer(up = 0) {
                         rotate([0, 90, 0]) {
                             cylinder(r=klammer_dicke, h=klammer.x);
                         }
+                        translate([0, 2*klammer_dicke, becher_hoehe+klammer_dicke+klammer_ueberstand-1.5*klammer_dicke]) {
+                            rotate([0, 90, 0]) {
+                                difference() {
+                                    translate([-klammer_dicke, -klammer_dicke, 0])
+                                        cube([klammer_dicke, klammer_dicke, klammer.x]);
+                                    translate([0, 0, -0.5])                                cylinder(r=klammer_dicke, h=klammer.x+1);
+                                }
+                            }
+                        }
                     }
                 }
             }
